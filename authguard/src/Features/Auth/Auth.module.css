@@ -1,0 +1,85 @@
+.LoginFormContainer{
+    /* background-color: orange; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.LoginHeadContainer{
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0rem 1.5rem ;
+    min-height: 25%;
+}
+.loginFormDiv{
+    width: 100%;
+    padding: 0.25rem;
+    height:auto;
+    min-height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aliceblue; */
+}
+.loginForm{
+    width: 100%;
+    /* background-color: beige; */
+    height: 100%;;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.loginFormDataDiv{
+    /* background-color: red; */
+    padding: 0.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;;
+}
+.loginFormDataDiv{
+    /* background-color: orange; */
+}
+/*  */
+.socialLogin{
+    /* background-color: pink; */
+    flex: 1;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.divLine{
+   /* background-color: orange; */
+   width: 100%;
+   height: 15px;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+.line{
+    background-color: gray;
+    flex: 1;
+    height: 2px;
+    margin: 5px;
+}
+.socialIcon{
+    /* background-color: blue; */
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    /* background-color: aliceblue; */
+    padding: 1rem;
+    width: 70px;
+    height: 70px;
+}

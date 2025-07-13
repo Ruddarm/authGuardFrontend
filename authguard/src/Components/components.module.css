@@ -1,0 +1,40 @@
+.inputFeild{
+    background-color: white;
+    border: 2px solid gainsboro;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 4px;
+    font-family: 'Times New Roman', Times, serif;
+}
+p{
+    margin: 0rem;
+}
+.button{
+    width: 7rem;
+    height: 2.5rem;
+    border: none;
+    display: flex;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid whitesmoke;
+    box-shadow: 1px 1px 2px gainsboro;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    align-items: center;
+}
+.submitButton{
+    background-color: green;
+    color: white;
+}
+h2{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+}
+.icon{
+    width: 100%;
+    height: 100%;
+}

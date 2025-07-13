@@ -1,0 +1,16 @@
+.AuthPageContainer{
+    display: flex;
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+.AuthPageImageContainer{
+    width: 45%;
+    /* background-color: blue; */
+    /* border: 2px solid blue; */
+}
+.FormLayoutContainer{
+    flex: 1;
+    /* padding: 0rem; */
+}
