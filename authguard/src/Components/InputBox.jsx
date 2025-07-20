@@ -1,13 +1,35 @@
 import React from "react";
 import Style from "./components.module.css";
 
-function InputBox({ id, placeHolder, type }) {
+function InputBox({
+  id,
+  placeHolder,
+  type,
+  error,
+  touched,
+  value,
+  handelChange,
+  handelBlur,
+  name,
+}) {
+  // console.log(name + " is" + value);
+
   return (
     <input
       id={id}
       type={type}
+      name={name}
       placeholder={placeHolder}
-      className={Style.inputFeild}
+      value={value}
+      onChange={(e) => {
+        handelChange(e);
+      }}
+      onBlur={(e) => {
+        handelBlur(e);
+      }}
+      className={`${Style.inputFeild} ${
+        touched ? (error ? Style.warnBorder : Style.successBorder) : ""
+      }`}
     ></input>
   );
 }

@@ -7,14 +7,13 @@
     
 }
 .LoginHeadContainer{
-    /* background-color: blue; */
+    /* background-color: green; */
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: flex-end;
     width: 100%;
     padding: 0rem 1.5rem ;
-    min-height: 25%;
+    min-height: 20%;
 }
 .loginFormDiv{
     width: 100%;

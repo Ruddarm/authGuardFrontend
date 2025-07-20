@@ -5,7 +5,23 @@ import SubmitButton from "../../Components/SubmitButton";
 import PTAG from "../../Components/Error";
 import { TitleTwo } from "../../Components/TitleHead";
 import Icon from "../../Components/Icon";
+import { LoginHook } from "./AuthHooks";
+import ErrorTag from "../../Components/Error";
 function LoginForm() {
+  const {
+    credential,
+    erros,
+    touched,
+    handelChange,
+    handleBlur,
+    handelLogin,
+    apiResponse,
+    loginSuccess,
+  } = LoginHook();
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    handelLogin();
+  };
   return (
     <>
       <div className={Style.LoginFormContainer}>
@@ -16,18 +32,41 @@ function LoginForm() {
         <div className={Style.loginFormDiv}>
           <form className={Style.loginForm}>
             <div className={Style.loginFormDataDiv}>
-              <InputBox placeHolder={"UserName"}></InputBox>
-              {/* <PTAG content={"Error"}></PTAG> */}
+              {apiResponse.erroMsg && (
+                <ErrorTag content={apiResponse.erroMsg}></ErrorTag>
+              )}
+              <InputBox
+                name={"email"}
+                value={credential.email}
+                handelChange={handelChange}
+                handelBlur={handleBlur}
+                touched={touched.email}
+                error={erros.email}
+                placeHolder={"Email"}
+              ></InputBox>
+              <ErrorTag content={erros.email}></ErrorTag>
             </div>
             <div className={Style.loginFormDataDiv}>
-              <InputBox type={"password"} placeHolder={"Password"}></InputBox>
-              {/* <PTAG content={"Error"}></PTAG> */}
+              <InputBox
+                name={"password"}
+                value={credential.password}
+                handelChange={handelChange}
+                handelBlur={handleBlur}
+                touched={touched.password}
+                error={erros.password}
+                type={"password"}
+                placeHolder={"Password"}
+              ></InputBox>
+              <ErrorTag content={erros.password}></ErrorTag>
             </div>
             <div className={`${Style.loginFormDataDiv} flex-row justify-start`}>
               Don't have account ? <a href="#"> create account</a>
             </div>
             <div className={`${Style.loginFormDataDiv} align-center`}>
-              <SubmitButton title={"Login"}></SubmitButton>
+              <SubmitButton
+                handelClick={handelSubmit}
+                title={"Login"}
+              ></SubmitButton>
             </div>
             <div></div>
           </form>
