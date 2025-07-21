@@ -1,0 +1,88 @@
+.dashboardLayoutContainer{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    /* flex-direction: column; */
+    /* background-color: green; */
+}
+.navtableLayoutContainer{
+    width: 20%;
+    display: flex;
+    border-right: 2px solid gainsboro;
+    box-shadow: 2px 2px snow;
+    background-color: whitesmoke;
+    top: 100;
+}
+
+.dataViewContainer{
+    /* background-color: aliceblue; */
+    flex: 1;
+    display: flex;
+    /* justify-content: center; */
+    /* background-color: orange; */
+}
+
+/* Admin Layout  */
+.adminLayoutContainer{
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-top: 2px solid gainsboro;
+    
+}
+.adminLayoutHeader{
+    background-color: white;
+    border-bottom: 2px solid white;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+.bannerMatrixContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 0.5rem;
+    /* background-color: rebeccapurple; */
+    justify-content: space-between;
+}
+.AdminLayoutGraphContainer{
+    display: flex;
+    /* background-color: green; */
+    flex:1;
+    padding: 0.5rem;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+/* app layouts */
+
+.appLayoutHeader{
+    display: flex;
+    /* background-color: orange; */
+    padding: 0.5rem;
+    justify-content: flex-end;
+}
+
+.appsContainer{
+    /* background-color: green; */
+    width: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(200px,1fr));
+    gap: 10px;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    /* grid-template-columns: 50% 50%; */
+}
+
+#createAppBtn{
+    font-size: 1rem;
+    font-family: 'inter';
+    width: max-content;
+    box-shadow: none;
+}

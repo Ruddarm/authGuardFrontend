@@ -49,3 +49,66 @@ h2{
     padding: 2px;
     color: red;
 }
+
+.cardOneContainer{
+    min-width: 250px;
+    width: 100%;
+    height: 150px;
+    border-right: 1px solid gainsboro;
+    background-color: white;
+}
+
+
+.appsCardContainer{
+    width: 200px;
+    border: 5px;
+    cursor: pointer;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    background-color: whitesmoke;
+
+}
+
+.tabButton{
+    width: 100%;
+    /* background-color: gainsboro; */
+    height: 50px;
+    outline: none;
+    border: none;
+    color: gray;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    font-family:'lato';
+    background-color: transparent;
+}
+.tabButton:hover{
+    background-color: gainsboro;
+}
+.graphContainer{
+    /* background-color: orange; */
+    width: 100%;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+}
+.graphContainerHeader{
+    /* background-color: blue; */
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid gainsboro;
+    display: flex;
+    padding-left: 0.5rem;
+}
+.titleThree{
+    color: gray;
+    font-size: 1.2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,8 +1,10 @@
 import { useState, useContext, createContext } from "react";
 import authenticate, { getClient } from "../../API/authApi";
+import { useNavigate } from "react-router-dom";
 import { setAccessToken } from "../../API/AxiosInstance";
 
 function LoginHook() {
+  const navigate = useNavigate();
   const [credential, setCredential] = useState({
     email: "rudram4234@gmail.com",
     password: "securedpassword",
@@ -44,26 +46,31 @@ function LoginHook() {
   };
   const validateAll = () => {
     const newErrors = {};
+    let isValid = true;
     for (const key in credential) {
       const error = validateField(key, credential[key]);
-      if (error) newErrors[key] = error;
+      if (error) {
+        newErrors[key] = error;
+        isValid = false;
+      }
     }
     setErrors(newErrors);
+    return isValid;
   };
   const handelLogin = async () => {
-    validateAll();
-    if (Object.keys(erros).length == 0) {
+    if (validateAll()) {
       try {
         const response = await authenticate(
           credential.email,
           credential.password
         );
-        if(response.status==202){
+        if (response.status == 202) {
           setAccessToken(response.data.accessToken);
         }
         console.log(response);
         const response2 = await getClient();
         console.log(response2);
+        navigate("../dashboard");
       } catch (ex) {
         if (ex.response) {
           setApiResponse((prev) => ({
@@ -100,9 +107,9 @@ function LoginHook() {
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  console.log("children ", children)
+  console.log("children ", children);
   const [accessToken, setAccessToken] = useState(null); // token in memory only
-  console.log(accessToken)
+  console.log(accessToken);
   const logout = () => {
     setAccessToken(null);
   };

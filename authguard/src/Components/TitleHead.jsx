@@ -1,5 +1,5 @@
 import React from 'react'
-import "./components.module.css"
+import Style from "./components.module.css"
 
 function TitleTwo({id,className,title}){
     return(
@@ -10,5 +10,11 @@ function TitleTwo({id,className,title}){
         </>
     )
 }
-
-export {TitleTwo}
+function TitleThree({id,className,title}){
+    return(
+        <h2 className={Style.titleThree}>
+            {title}
+        </h2>
+    )
+}
+export {TitleTwo,TitleThree}
