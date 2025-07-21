@@ -1,25 +1,28 @@
 import React from "react";
 import Style from "./DashboardLayout.module.css";
-import Card, { Appscard } from "../../Components/CardOne";
-import SubmitButton from "../../Components/SubmitButton";
+import { Appscard } from "../../Components/CardOne";
+import AppViewHeader from "../../Features/Dashboard/AppView/AppViewHeader";
+import AppsViewContainer from "../../Features/Dashboard/AppView/AppsViewContainer";
+import { TitleThree } from "../../Components/TitleHead";
 function AppsLayout() {
   return (
     <>
       <div className={Style.adminLayoutContainer}>
         <div className={Style.appLayoutHeader}>
-          <SubmitButton
-            id={Style.createAppBtn}
-            title={"Create Apps"}
-          ></SubmitButton>
+          <AppViewHeader></AppViewHeader>
         </div>
+
         <div className={Style.appsContainer}>
-          <Appscard></Appscard>
-          <Appscard></Appscard>
-          <Appscard></Appscard>
-          <Appscard></Appscard>
-          <Appscard></Appscard>
-          <Appscard></Appscard>
-          <Appscard></Appscard>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignContent: "flex-end",
+            }}
+          >
+            <TitleThree title={"Your Apps"}></TitleThree>
+          </div>
+          <AppsViewContainer></AppsViewContainer>
         </div>
       </div>
     </>

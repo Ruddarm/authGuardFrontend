@@ -27,6 +27,7 @@
     /* background-color: red; */
     width: 100%;
     display: flex;
+    padding: 0 1rem;
     flex-direction: column;
     flex: 1;
     border-top: 2px solid gainsboro;
@@ -43,15 +44,16 @@
     width: 100%;
     height: auto;
     display: flex;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     /* background-color: rebeccapurple; */
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 .AdminLayoutGraphContainer{
     display: flex;
     /* background-color: green; */
     flex:1;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     width: 100%;
     flex-direction: column;
 }
@@ -61,28 +63,22 @@
 
 .appLayoutHeader{
     display: flex;
+    border-bottom: 1px solid gainsboro;
     /* background-color: orange; */
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    min-height: 40px;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .appsContainer{
     /* background-color: green; */
     width: 100%;
     flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(200px,1fr));
-    gap: 10px;
-    justify-content: flex-start;
-    padding: 0.5rem;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+    padding: 1rem;
     /* grid-template-columns: 50% 50%; */
 }
 
-#createAppBtn{
-    font-size: 1rem;
-    font-family: 'inter';
-    width: max-content;
-    box-shadow: none;
-}

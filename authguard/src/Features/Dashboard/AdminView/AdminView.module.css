@@ -1,7 +1,6 @@
 .bannerMatrixContainer{
     width: 100%;
     height: auto;
-    /* background-color: red; */
     display: flex;
     align-items: center;
     padding:  0;
@@ -9,6 +8,8 @@
     border-radius: 10px;
     border: 1px solid gainsboro;
     /* justify-content: ; */
+    background-color: red;
+
 }
 
 .loginGraphContainer{
@@ -18,7 +19,7 @@
     flex: 1;
     border-radius: 5px;
     overflow: hidden;
-    padding: 1rem;
+    /* padding: 1rem; */
     background-color: whitesmoke;
     margin-bottom: 1rem;
 }

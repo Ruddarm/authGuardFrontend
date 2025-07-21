@@ -23,6 +23,14 @@ function DashboardRoute() {
           </DashboardLayout>
         }
       ></Route>
+      <Route
+        path="/profile"
+        element={
+          <DashboardLayout>
+            <h1>fuck you man</h1>
+          </DashboardLayout>
+        }
+      ></Route>
     </Routes>
   );
 }
