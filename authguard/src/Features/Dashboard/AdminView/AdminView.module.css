@@ -23,3 +23,31 @@
     background-color: whitesmoke;
     margin-bottom: 1rem;
 }
+
+.matrixCardItemContainer{
+    width: 100%;
+    height: 50%;
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid gainsboro;
+}
+
+.matrixCardInnerContainer{
+    /* background-color: blue; */
+    flex: 1;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#matrixIcon{
+    /* background-color: orangered; */
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+

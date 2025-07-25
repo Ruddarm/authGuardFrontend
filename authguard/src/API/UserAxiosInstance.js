@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+const UseraxiosInstance = axios.create({
   baseURL: "http://localhost:8080/",
   headers: {
     "Content-Type": "application/json",
@@ -8,10 +8,11 @@ const axiosInstance = axios.create({
 });
 
 let accessToken = null;
-export const setAccessToken = (token) => {
+export const setAccessTokenAPI = (token) => {
+  console.log(token)
   accessToken = token;
 };
-axiosInstance.interceptors.request.use(
+UseraxiosInstance.interceptors.request.use(
   (config) => {
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
@@ -23,14 +24,18 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-axiosInstance.interceptors.response.use(
+UseraxiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
     if (error.response) {
       console.log(" API Error:", error.response.data);
-      if (error.response.status === 401) {
+      const originalRequest = error.config;
+      if (error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry=true;
+        const res = axios.get("auth/client/refres",{withCredentials:true});
+        
         alert("Session expired, login again");
       }
     } else if (error.request) {
@@ -42,4 +47,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export default axiosInstance;
+export default UseraxiosInstance;

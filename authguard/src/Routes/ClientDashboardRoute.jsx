@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import DashboardLayout from "../Layouts/Dashboard/DashBoardLayout";
 import AdminLayout from "../Layouts/Dashboard/AdminLayout";
 import AppsLayout from "../Layouts/Dashboard/AppsLayout";
+import AppViewLayout from "../Layouts/Dashboard/AppViewLayout";
 
 function DashboardRoute() {
   return (
@@ -20,6 +21,14 @@ function DashboardRoute() {
         element={
           <DashboardLayout>
             <AppsLayout></AppsLayout>
+          </DashboardLayout>
+        }
+      ></Route>
+      <Route
+        path="/apps/app/:appId" 
+        element={
+          <DashboardLayout>
+            <AppViewLayout></AppViewLayout>
           </DashboardLayout>
         }
       ></Route>

@@ -1,0 +1,30 @@
+.signupFormContainer{
+    /* background-color: orange; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.signupInputContainer{
+    /* background-color: blue; */
+    padding: 0.5rem;
+    width: 50%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;   
+}
+#signupInputLable{
+    /* background-color: aliceblue; */
+    justify-content: flex-start;
+    font-size: 1rem;
+    font-weight: bold;
+}
+#signupInputBox{
+    /* background-color: yellow; */
+    font-size: 1.2rem;
+}
+#createAccountBtn{
+    width: max-content;
+    box-shadow: none;
+}

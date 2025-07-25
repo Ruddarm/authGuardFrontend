@@ -3,11 +3,10 @@ import Style from "./Auth.module.css";
 import InputBox from "../../Components/inputBox";
 import SubmitButton from "../../Components/SubmitButton";
 import PTAG from "../../Components/Error";
-import { TitleTwo } from "../../Components/TitleHead";
+import { SubTitle, TitleTwo } from "../../Components/TitleHead";
 import Icon from "../../Components/Icon";
-import { LoginHook } from "./AuthHooks";
 import ErrorTag from "../../Components/Error";
-function LoginForm() {
+function LoginForm({ heading, subtitle, creaturl, loginHook }) {
   const {
     credential,
     erros,
@@ -17,7 +16,7 @@ function LoginForm() {
     handelLogin,
     apiResponse,
     loginSuccess,
-  } = LoginHook();
+  } = loginHook();
   const handelSubmit = (e) => {
     e.preventDefault();
     handelLogin();
@@ -27,7 +26,8 @@ function LoginForm() {
       <div className={Style.LoginFormContainer}>
         {/* //Logo and Contetn */}
         <div className={Style.LoginHeadContainer}>
-          <TitleTwo title={"Nice to see you agian...!"}></TitleTwo>
+          <TitleTwo title={heading}></TitleTwo>
+          <SubTitle title={subtitle}></SubTitle>
         </div>
         <div className={Style.loginFormDiv}>
           <form className={Style.loginForm}>
@@ -60,7 +60,7 @@ function LoginForm() {
               <ErrorTag content={erros.password}></ErrorTag>
             </div>
             <div className={`${Style.loginFormDataDiv} flex-row justify-start`}>
-              Don't have account ? <a href="#"> create account</a>
+              Don't have account ? <a href={creaturl}> create account</a>
             </div>
             <div className={`${Style.loginFormDataDiv} align-center`}>
               <SubmitButton

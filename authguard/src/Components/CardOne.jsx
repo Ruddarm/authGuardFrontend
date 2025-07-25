@@ -1,17 +1,21 @@
 import React from "react";
 import Style from "./components.module.css";
-function Card() {
+function Card({children}) {
   return (
     <>
-      <div className={Style.cardOneContainer}></div>
+      <div className={Style.cardOneContainer}>
+        {children}
+      </div>
     </>
   );
 }
 
-function Appscard() {
+function Appscard({children,handelClick}) {
   return (
     <>
-      <div className={Style.appsCardContainer}></div>
+      <div onClick={()=>{handelClick()}} className={Style.appsCardContainer}>
+        {children}
+      </div>
     </>
   );
 }

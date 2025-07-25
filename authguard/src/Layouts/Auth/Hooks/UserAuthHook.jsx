@@ -1,13 +1,13 @@
-import { useState, useContext, createContext } from "react";
-import authenticate, { getClient } from "../../API/authApi";
-import { useNavigate } from "react-router-dom";
-import { setAccessToken } from "../../API/AxiosInstance";
+import { useState, useEffect, useContext, createContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import axiosInstance, { setAccessTokenAPI } from "../../../API/ClientAxiosInstance";
 
 function LoginHook() {
   const navigate = useNavigate();
+  const { setAccessToken } = useAuth();
   const [credential, setCredential] = useState({
-    email: "rudram4234@gmail.com",
-    password: "securedpassword",
+    email: "",
+    password: "",
   });
   const [erros, setErrors] = useState({});
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -66,11 +66,12 @@ function LoginHook() {
         );
         if (response.status == 202) {
           setAccessToken(response.data.accessToken);
+          setAccessTokenAPI(response.data.accessToken);
         }
         console.log(response);
         const response2 = await getClient();
         console.log(response2);
-        navigate("../dashboard");
+        navigate("../dashboard/admin");
       } catch (ex) {
         if (ex.response) {
           setApiResponse((prev) => ({
@@ -104,23 +105,58 @@ function LoginHook() {
   };
 }
 
-const AuthContext = createContext();
+const ClientAuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-  console.log("children ", children);
+const ClientAuthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null); // token in memory only
-  console.log(accessToken);
+  const [verifying, setVerifying] = useState(true);
+  useEffect(() => {
+    const refresh = async () => {
+      try {
+        const res = await axiosInstance.get("/auth/User/refresh", {
+          withCredentials: true,
+        });
+        setAccessToken(res.data.accessToken);
+      } catch (err) {
+        console.log(err);
+        setAccessToken(null);
+      } finally {
+        setVerifying(false);
+      }
+    };
+    refresh();
+  }, []);
+
+  useEffect(() => {
+    setAccessTokenAPI(accessToken);
+  }, [accessToken]);
   const logout = () => {
     setAccessToken(null);
+    setAccessTokenAPI(null);
   };
 
   return (
-    <AuthContext.Provider value={{ accessToken, logout }}>
+    <ClientAuthContext.Provider
+      value={{ accessToken, setAccessToken, logout, verifying }}
+    >
       {children}
-    </AuthContext.Provider>
+    </ClientAuthContext.Provider>
   );
 };
 
-const useAuth = () => useContext(AuthContext);
+const userProtectedRoute = ({ children }) => {
+  const { accessToken, verifying } = useAuth();
+  if (verifying) {
+    return <>Verify login....</>;
+  }
+  console.log("acess token is ", accessToken);
+  return accessToken ? (
+    children
+  ) : (
+    <Navigate to={"/User/login"} replace></Navigate>
+  );
+};
 
-export { LoginHook, useAuth, AuthProvider };
+const useAuth = () => useContext(ClientAuthContext);
+
+export { LoginHook, useAuth, ClientAuthProvider, userProtectedRoute };

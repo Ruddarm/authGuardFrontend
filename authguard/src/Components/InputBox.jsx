@@ -11,6 +11,7 @@ function InputBox({
   handelChange,
   handelBlur,
   name,
+  isReadOnly = false,
 }) {
   // console.log(name + " is" + value);
 
@@ -21,6 +22,7 @@ function InputBox({
       name={name}
       placeholder={placeHolder}
       value={value}
+      readOnly={isReadOnly}
       onChange={(e) => {
         handelChange(e);
       }}
