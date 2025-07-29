@@ -7,15 +7,14 @@ const UseraxiosInstance = axios.create({
   },
 });
 
-let accessToken = null;
-export const setAccessTokenAPI = (token) => {
-  console.log(token)
-  accessToken = token;
+let userAccessToken = null;
+export const setUserAccessTokenAPI = (token) => {
+  userAccessToken = token;
 };
 UseraxiosInstance.interceptors.request.use(
   (config) => {
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+    if (userAccessToken) {
+      config.headers.Authorization = `Bearer ${userAccessToken}`;
     }
     return config;
   },
@@ -30,11 +29,11 @@ UseraxiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response) {
-      console.log(" API Error:", error.response.data);
+      // console.log(" API Error:", error.response.data);
       const originalRequest = error.config;
       if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry=true;
-        const res = axios.get("auth/client/refres",{withCredentials:true});
+        const res = axios.get("auth/user/refresh",{withCredentials:true});
         
         alert("Session expired, login again");
       }

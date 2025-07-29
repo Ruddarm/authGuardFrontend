@@ -16,7 +16,9 @@
     background-color: white;
     border-radius: 5px;
     flex: 1;
-    padding: 1rem;
+    border: 1px solid var(--baseColor);
+    padding: 0rem;
+    overflow: hidden;
     display: flex;
 }
 .singupFooterContainer{

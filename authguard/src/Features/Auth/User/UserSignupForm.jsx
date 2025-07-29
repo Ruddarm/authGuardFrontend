@@ -1,4 +1,5 @@
 import ErrorTag from "../../../Components/Error";
+import InfiniteLoader from "../../../Components/infinteLoader";
 import InputBox from "../../../Components/inputBox";
 import InputLabel from "../../../Components/InputLabel";
 import SubmitButton from "../../../Components/SubmitButton";
@@ -12,6 +13,7 @@ function UserSignupForm() {
     handleChange,
     handleBlur,
     handleSignup,
+    loader,
     apiResponse,
   } = UserSignupHook();
   const signup = (e) => {
@@ -20,6 +22,7 @@ function UserSignupForm() {
   };
   return (
     <form className={Style.signupFormContainer}>
+      {loader && <InfiniteLoader></InfiniteLoader>}
       <div className={Style.signupInputContainer}>
         <ErrorTag content={apiResponse.erroMsg}></ErrorTag>
         <InputLabel

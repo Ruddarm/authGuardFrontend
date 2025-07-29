@@ -2,17 +2,14 @@ import React from "react";
 import Style from "./AuthLayout.module.css";
 import LoginForm from "../../Features/Auth/LoginFrom";
 import { ClientLoginHook } from "./Hooks/ClientAuthHooks";
-function FormLayout() {
+import Icon from "../../Components/Icon";
+import InfiniteLoader from "../../Components/infinteLoader";
+function FormLayout({ children }) {
   return (
     <>
       <div className={Style.formContainer}>
         <div className={Style.formInnerContainer}>
-          <LoginForm
-            subtitle={"Secure access to your AuthGuard client portal"}
-            creaturl={"/client/signup"}
-            heading={"Welcome back to AuthGuard Console"}
-            loginHook={ClientLoginHook}
-          ></LoginForm>
+          {children}
         </div>
       </div>
     </>

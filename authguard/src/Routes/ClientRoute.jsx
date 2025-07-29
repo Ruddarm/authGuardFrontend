@@ -7,7 +7,11 @@ import SignupPage from "../Page/Auth/SignupPage";
 import ClientSignupFormLayout from "../Layouts/Auth/SignupFormLayout";
 import UserSignupForm from "../Features/Auth/User/UserSignupForm";
 import ClientSignupForm from "../Features/Auth/Client/ClientSignupForm";
-import { ClientProtectedRoute } from "../Layouts/Auth/Hooks/ClientAuthHooks";
+import {
+  ClientLoginHook,
+  ClientProtectedRoute,
+} from "../Layouts/Auth/Hooks/ClientAuthHooks";
+import LoginForm from "../Features/Auth/LoginFrom";
 
 function ClientRoutes() {
   return (
@@ -16,7 +20,14 @@ function ClientRoutes() {
         path="login"
         element={
           <ClientAuthPage>
-            <FormLayout></FormLayout>
+            <FormLayout>
+              <LoginForm
+                subtitle={"Secure access to your AuthGuard client portal"}
+                creaturl={"/client/signup"}
+                heading={"Welcome back to AuthGuard Console"}
+                loginHook={ClientLoginHook}
+              ></LoginForm>
+            </FormLayout>
           </ClientAuthPage>
         }
       />

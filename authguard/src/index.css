@@ -1,5 +1,7 @@
 :root {
-  
+    --baseColor:#3298d7;
+    --compliment:7cd8e8;
+    --baseGradient : linear-gradient(135deg, #7cd8e8  60%, #3298d7  100%);
 }
 
 *{

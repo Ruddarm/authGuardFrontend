@@ -11,7 +11,7 @@ function ClientSignupHook() {
     password: "",
     confirmPassword: "",
   });
-
+  const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [apiResponse, setApiResponse] = useState({
@@ -53,8 +53,14 @@ function ClientSignupHook() {
       setErrors((prev) => ({ ...prev, [name]: error }));
     }
 
-    if ((name === "password" || name === "confirmPassword") && touched.confirmPassword) {
-      const confirmError = validateField("confirmPassword", name === "password" ? user.confirmPassword : value);
+    if (
+      (name === "password" || name === "confirmPassword") &&
+      touched.confirmPassword
+    ) {
+      const confirmError = validateField(
+        "confirmPassword",
+        name === "password" ? user.confirmPassword : value
+      );
       setErrors((prev) => ({ ...prev, confirmPassword: confirmError }));
     }
   };
@@ -85,6 +91,7 @@ function ClientSignupHook() {
   const handleSignup = async () => {
     if (validateAll()) {
       try {
+        setLoader(true);
         const response = await signupClient(user); // Make sure this API exists and returns success
         console.log("Signup success", response);
         navigate("/client/login"); // Redirect after signup
@@ -105,6 +112,8 @@ function ClientSignupHook() {
             attempt: true,
           });
         }
+      } finally {
+        setLoader(false);
       }
     }
   };
@@ -114,6 +123,7 @@ function ClientSignupHook() {
     errors,
     touched,
     handleChange,
+    loader,
     handleBlur,
     validateAll,
     handleSignup,

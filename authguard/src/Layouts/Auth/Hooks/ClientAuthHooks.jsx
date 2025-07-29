@@ -1,18 +1,19 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import { clientAuthenticate, getClient } from "../../../API/ClientAuthApi";
 import { Navigate, useNavigate } from "react-router-dom";
-import {  setClientAccessTokenAPI } from "../../../API/ClientAxiosInstance";
+import { setClientAccessTokenAPI } from "../../../API/ClientAxiosInstance";
 import ClientaxiosInstance from "../../../API/ClientAxiosInstance";
 
 function ClientLoginHook() {
   const navigate = useNavigate();
   const { setAccessToken } = useAuth();
+  const [loader, setLoader] = useState(false);
   const [credential, setCredential] = useState({
     email: "",
     password: "",
   });
   const [erros, setErrors] = useState({});
-  const [loginSuccess, setLoginSuccess] = useState(false);
+  // const [loginSuccess, setLoginSuccess] = useState(false);
   const [apiResponse, setApiResponse] = useState({
     erroMsg: "",
     attempt: false,
@@ -62,6 +63,7 @@ function ClientLoginHook() {
   const handelLogin = async () => {
     if (validateAll()) {
       try {
+        setLoader(true);
         const response = await clientAuthenticate(
           credential.email,
           credential.password
@@ -91,6 +93,8 @@ function ClientLoginHook() {
             erroMsg: ex.message || "Unknown error occurred.",
           }));
         }
+      }finally{
+        setLoader(false)
       }
     }
   };
@@ -101,9 +105,9 @@ function ClientLoginHook() {
     validateAll,
     handelChange,
     handleBlur,
+    loader,
     handelLogin,
     apiResponse,
-    loginSuccess,
   };
 }
 

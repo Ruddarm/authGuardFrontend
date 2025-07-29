@@ -1,0 +1,157 @@
+.oathContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #eef2f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.oathCard {
+  background: white;
+  padding:  0 ;
+  overflow: hidden;
+  border: 1px solid  #3298d7 ;
+  /* border-color: ; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.appTitle {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm label {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #444;
+}
+
+.loginForm input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.loginForm button {
+  margin-top: 20px;
+  padding: 10px;
+  background: #2d80f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.loginForm button:hover {
+  background: #1b5edb;
+}
+
+.info {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.redirectUrl {
+  display: block;
+  margin-top: 4px;
+  color: #0077cc;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #888;
+  padding-bottom: 1rem;
+}
+
+.powered {
+  margin-top: 6px;
+  color: #333;
+}
+
+.accountCard{
+  background-color: white;
+  height: 80px;
+  border: 1px solid gainsboro;
+  cursor: pointer;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: -1px -1px 4px gainsboro;
+
+}
+
+.authGuardLogoContainer{
+  /* background-color: yellow; */
+  height: 6rem;
+  /* width: 100px; */
+  display: flex;
+  padding: 0.25rem;
+}
+
+.userIconContainer{
+  padding: 15px;
+  /* background-color: orange; */
+}
+
+.userInfoContainer{
+    /* background-color: pink; */
+    flex: 1;
+    display: flex;
+    padding: 5px 10px ;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.anthrAccBtn{
+    border: none;
+    background-color: none;
+    outline: none;
+    background-color: transparent;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.coreLoginFormContainer{
+  /* background-color: orange; */
+  width: 100%;
+
+}
+.oauthCardInnerContainer{
+  /* background-color: red; */
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+}

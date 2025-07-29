@@ -1,24 +1,35 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
 import { getUser, UserAuthenticate } from "../../../API/UserAuthApi";
 import UseraxiosInstance, {
   setUserAccessTokenAPI,
 } from "../../../API/UserAxiosInstance";
+import { genrateCode } from "../../../API/OathApi";
 
-function UserLoginHook() {
+function OauthLoginHook() {
   const navigate = useNavigate();
-  const { setAccessToken } = useAuth();
+  const { setAccessToken } = useOauth();
   const [credential, setCredential] = useState({
     email: "",
     password: "",
   });
-  const [loader,setLoader] = useState(false);
+  const [clientPayLoad, setClientPayload] = useState({
+    client_id: "",
+    appId: "",
+    redirectUrl: "",
+    state: "",
+    nonce: "",
+  });
+  const [loader, setLoader] = useState(false);
+
   const [erros, setErrors] = useState({});
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [apiResponse, setApiResponse] = useState({
     erroMsg: "",
+    useremail: "",
     attempt: false,
   });
+
   const [touched, setTouched] = useState({});
   const validateField = (name, value) => {
     let error = "";
@@ -64,19 +75,14 @@ function UserLoginHook() {
   const handelLogin = async () => {
     if (validateAll()) {
       try {
-        setLoader(true)
         const response = await UserAuthenticate(
           credential.email,
           credential.password
         );
         if (response.status == 202) {
           setAccessToken(response.data.accessToken);
-          console.log(response.data.accessToken)
-          // setUserAccessTokenAPI(response.data.accessToken);
+          console.log(response.data.accessToken);
         }
-        console.log(response);
-        const response2 = await getUser();
-        console.log(response2);
         navigate("../dashboard/admin");
       } catch (ex) {
         if (ex.response) {
@@ -96,9 +102,42 @@ function UserLoginHook() {
           }));
         }
       }
-      finally{
-        setLoader(false)
+    }
+  };
+
+  const handelCodeGenrationWithoutLogin = async () => {
+    try {
+      setLoader(true);
+      const response = await genrateCode(clientPayLoad);
+      // console.log(response);
+      if (response.status == 200) {
+        const { code, redirecturi } = response.data;
+        console.log(`${redirecturi}?code=${code}`);
+        window.location.href = `${redirecturi}?code=${code}&state=${clientPayLoad.state}&nonce${clientPayLoad.nonce}`;
+        console.log("time out set");
       }
+    } catch (ex) {
+      console.log(ex);
+      if (ex.response) {
+        setApiResponse((prev) => ({
+          ...prev,
+          erroMsg: ex.response.data?.message || "Invalid credentials",
+        }));
+      } else if (ex.request) {
+        setApiResponse((prev) => ({
+          ...prev,
+          erroMsg: "Server unreachable. Please try again later.",
+        }));
+      } else {
+        setApiResponse((prev) => ({
+          ...prev,
+          erroMsg: ex.message || "Unknown error occurred.",
+        }));
+      }
+    }
+    finally{
+      setLoader(false);
+
     }
   };
   return {
@@ -107,19 +146,23 @@ function UserLoginHook() {
     touched,
     validateAll,
     handelChange,
+    clientPayLoad,
     handleBlur,
+    setClientPayload,
+    handelCodeGenrationWithoutLogin,
     handelLogin,
-    loader,
     apiResponse,
     loginSuccess,
+    loader
   };
 }
 
-const UserAuthContext = createContext();
+const OauthContext = createContext();
 
-const UserAuthProvider = ({ children }) => {
+const OauthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null); // token in memory only
   const [verifying, setVerifying] = useState(true);
+  const [userEmail, setUserEmail] = useState("");
   useEffect(() => {
     const refresh = async () => {
       try {
@@ -127,6 +170,8 @@ const UserAuthProvider = ({ children }) => {
           withCredentials: true,
         });
         setAccessToken(res.data.accessToken);
+        setUserEmail(res.data.userEmail);
+        console.log(res);
       } catch (err) {
         console.log(err);
         setAccessToken(null);
@@ -146,27 +191,27 @@ const UserAuthProvider = ({ children }) => {
   };
 
   return (
-    <UserAuthContext.Provider
-      value={{ accessToken, setAccessToken, logout, verifying }}
+    <OauthContext.Provider
+      value={{ accessToken, setAccessToken, logout, verifying, userEmail }}
     >
       {children}
-    </UserAuthContext.Provider>
+    </OauthContext.Provider>
   );
 };
 
-const userProtectedRoute = ({ children }) => {
-  const { accessToken, verifying } = useAuth();
-  if (verifying) {
-    return <>Verify login....</>;
-  }
-  console.log("acess token is ", accessToken);
-  return accessToken ? (
-    children
-  ) : (
-    <Navigate to={"/User/login"} replace></Navigate>
-  );
-};
+// const userProtectedRoute = ({ children }) => {
+//   const { accessToken, verifying } = useAuth();
+//   if (verifying) {
+//     return <>Verify login....</>;
+//   }
+//   console.log("acess token is ", accessToken);
+//   return accessToken ? (
+//     children
+//   ) : (
+//     <Navigate to={"/User/login"} replace></Navigate>
+//   );
+// };
 
-const useAuth = () => useContext(UserAuthContext);
+const useOauth = () => useContext(OauthContext);
 
-export { UserLoginHook, useAuth, UserAuthContext, UserAuthProvider, userProtectedRoute };
+export { OauthLoginHook, useOauth, OauthContext, OauthProvider };

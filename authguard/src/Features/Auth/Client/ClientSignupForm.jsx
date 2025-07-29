@@ -7,6 +7,7 @@ import SubmitButton from "../../../Components/SubmitButton";
 import SignupHook from "../../../Layouts/Auth/Hooks/ClientSignupHook";
 import ErrorTag from "../../../Components/Error";
 import ClientSignupHook from "../../../Layouts/Auth/Hooks/ClientSignupHook";
+import InfiniteLoader from "../../../Components/infinteLoader";
 function ClientSignupForm() {
   const {
     user,
@@ -15,6 +16,7 @@ function ClientSignupForm() {
     handleChange,
     handleBlur,
     handleSignup,
+    loader,
     apiResponse,
   } = ClientSignupHook();
   const signup = (e) => {
@@ -23,6 +25,7 @@ function ClientSignupForm() {
   };
   return (
     <form className={Style.signupFormContainer}>
+      {loader && <InfiniteLoader></InfiniteLoader>}
       <div className={Style.signupInputContainer}>
         <ErrorTag content={apiResponse.erroMsg}></ErrorTag>
 

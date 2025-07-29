@@ -7,6 +7,8 @@ import SignupPage from "../Page/Auth/SignupPage";
 import ClientSignupFormLayout from "../Layouts/Auth/SignupFormLayout";
 import UserSignupForm from "../Features/Auth/User/UserSignupForm";
 import ClientSignupForm from "../Features/Auth/Client/ClientSignupForm";
+import { UserLoginHook } from "../Layouts/Auth/Hooks/UserAuthHook";
+import LoginForm from "../Features/Auth/LoginFrom";
 
 function UserRoutes() {
   return (
@@ -15,7 +17,14 @@ function UserRoutes() {
         path="login"
         element={
           <UserAuthPage>
-            <FormLayout></FormLayout>
+            <FormLayout>
+              <LoginForm
+                subtitle={"Secure access to your AuthGuard User portal"}
+                creaturl={"/user/signup"}
+                heading={"Welcome back to AuthGuard..!"}
+                loginHook={UserLoginHook}
+              ></LoginForm>
+            </FormLayout>
           </UserAuthPage>
         }
       />
@@ -25,7 +34,7 @@ function UserRoutes() {
           <SignupPage
             headTitle={"Welcome to AuthGuard.. ! Easy Login any where"}
             footerTitle={"Already have user account.."}
-            loginUrl={"/login"}
+            loginUrl={"/user/login"}
           >
             <ClientSignupFormLayout>
               <UserSignupForm></UserSignupForm>

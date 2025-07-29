@@ -1,20 +1,20 @@
 import axios from "axios";
 
-const ClientaxiosInstance = axios.create({
+const OauthaxiosInstance = axios.create({
   baseURL: "http://localhost:8080/",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-let clientAccessToken = null;
-export const setClientAccessTokenAPI = (token) => {
-  clientAccessToken = token;
+let oauthAccessToken = null;
+export const setOauthAccessTokenAPI = (token) => {
+  oauthAccessToken = token;
 };
-ClientaxiosInstance.interceptors.request.use(
+OauthaxiosInstance.interceptors.request.use(
   (config) => {
-    if (clientAccessToken) {
-      config.headers.Authorization = `Bearer ${clientAccessToken}`;
+    if (oauthAccessToken) {
+      config.headers.Authorization = `Bearer ${oauthAccessToken}`;
     }
     return config;
   },
@@ -23,17 +23,17 @@ ClientaxiosInstance.interceptors.request.use(
   }
 );
 
-ClientaxiosInstance.interceptors.response.use(
+OauthaxiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
     if (error.response) {
-      // console.log(" API Error:", error.response.data);
+    //   console.log(" API Error:", error.response.data);
       const originalRequest = error.config;
       if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry=true;
-        const res = axios.get("auth/client/refresh",{withCredentials:true});
+        const res = axios.get("auth/user/refresh",{withCredentials:true});
         
         alert("Session expired, login again");
       }
@@ -46,4 +46,4 @@ ClientaxiosInstance.interceptors.response.use(
   }
 );
 
-export default ClientaxiosInstance;
+export default OauthaxiosInstance;

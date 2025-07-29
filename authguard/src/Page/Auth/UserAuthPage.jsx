@@ -7,7 +7,6 @@ function UserAuthPage({ children }) {
     <>
       <div className={Style.AuthPageContainer}>
         <div className={Style.FormLayoutContainer}>{children}</div>
-        <div className={Style.AuthPageImageContainer}></div>
       </div>
     </>
   );

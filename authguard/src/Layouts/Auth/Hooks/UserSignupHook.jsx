@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { signupClient } from "../../../API/ClientAuthApi";
+import {  useNavigate } from "react-router-dom";
+import { signupUser } from "../../../API/UserAuthApi";
 
 function UserSignupHook() {
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ function UserSignupHook() {
     erroMsg: "",
     attempt: false,
   });
+  const [loader,setLoader] = useState(false)
 
   const validateField = (name, value) => {
     let error = "";
@@ -91,9 +92,10 @@ function UserSignupHook() {
   const handleSignup = async () => {
     if (validateAll()) {
       try {
-        const response = await signupClient(user); // Make sure this API exists and returns success
+        setLoader(true)
+        const response = await signupUser(user); // Make sure this API exists and returns success
         console.log("Signup success", response);
-        navigate("user/login"); // Redirect after signup
+        navigate("/user/login"); // Redirect after signup
       } catch (ex) {
         if (ex.response) {
           setApiResponse({
@@ -111,6 +113,8 @@ function UserSignupHook() {
             attempt: true,
           });
         }
+      }finally{
+        setLoader(false)
       }
     }
   };
@@ -122,6 +126,7 @@ function UserSignupHook() {
     handleChange,
     handleBlur,
     validateAll,
+    loader,
     handleSignup,
     apiResponse,
   };

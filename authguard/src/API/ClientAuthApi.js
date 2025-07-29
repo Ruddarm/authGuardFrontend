@@ -1,6 +1,5 @@
 import ClientAuthPage from "../Page/Auth/ClientAuthPage";
 import ClientaxiosInstance from "./ClientAxiosInstance";
-import axiosInstance from "./ClientAxiosInstance";
 
 const clientAuthenticate = async (email, password) => {
   const payload = { username: email, password: password };
