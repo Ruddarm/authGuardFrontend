@@ -48,11 +48,11 @@ function LoginForm({ heading, subtitle, creaturl, loginHook }) {
         </div>
         {/* social login */}
         {
-          <div className={Style.socialLogin}>
-            <div className={Style.divLine}>
-              <div className={Style.line}></div>
-            </div>
-          </div>
+          // <div className={Style.socialLogin}>
+          //   <div className={Style.divLine}>
+          //     <div className={Style.line}></div>
+          //   </div>
+          // </div>
         }
       </div>
     </>

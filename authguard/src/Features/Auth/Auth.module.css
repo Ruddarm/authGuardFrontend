@@ -6,6 +6,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: var(--shadow);
+    box-shadow: 1px 1px 6px var(--compliment), 2px 2px 8px gainsboro;
+
 }
 .LoginHeadContainer{
     /* background-color: green; */

@@ -1,0 +1,66 @@
+.homePageContainer{
+    flex: 1;;
+    display: flex;
+    background-color: var(--bgColor);
+    flex-direction: column;
+    /* background-color: white; */
+
+}
+
+.benefitContainer{
+    padding: 1rem;
+    display: flex;
+    /* background:white; */
+    justify-content: center;
+    flex-direction: column;
+}
+
+.benefitContainerTitile{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* background-color: palevioletred; */
+    text-align: center;
+    align-items: center;
+}
+
+.benefitTitle{
+    font-size: 2rem;
+}
+.innerBenefitContainer{
+    /* background-color: orange; */
+    flex: 1;
+    min-height: 300px;
+    display: flex;
+}
+.devBenefit{
+    flex: 1;
+    border: 1px solid gainsboro;
+    background-color: white;
+    padding: 1rem;
+    margin-right: 10px;
+    border-radius: 10px;
+    /* background-color:blue; */
+}
+.userBenefit{
+    flex: 1;    
+    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+
+    /* background-color: pink; */
+}
+
+.userIconClass{
+    background-color: greenyellow !important;
+    color: green !important;
+}
+
+
+.integrationContainer{
+    min-height: 300px;
+    width: 100%;
+    padding: 1rem;
+    /* background-color: orange; */
+}

@@ -10,11 +10,20 @@ function TitleTwo({ id, className, title }) {
     </>
   );
 }
-function TitleThree({ id, className, title }) {
-  return <h2 className={Style.titleThree}>{title}</h2>;
+function TitleThree({ id, style, className, title }) {
+  return (
+    <h2 id={id} style={style} className={`${Style.titleThree} ${className}`}>
+      {title}
+    </h2>
+  );
 }
 
-function SubTitle({ id, className, title, children }) {
-  return <p className={Style.subTitle}>{title}{children}</p>;
+function SubTitle({ id, style, className, title, children }) {
+  return (
+    <p id={id} style={style} className={Style.subTitle}>
+      {title}
+      {children}
+    </p>
+  );
 }
 export { TitleTwo, TitleThree, SubTitle };

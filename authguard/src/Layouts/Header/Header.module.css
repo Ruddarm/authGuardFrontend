@@ -1,11 +1,131 @@
 .HeadContainer{
     /* background-color: white; */
     width: 100%;
-    background: var(--baseGradient);
-    min-height: 60px;
+    background: white;
+    max-height: 60px;
     position: sticky;
+    display: flex;
     top: 0;
+    padding: 0.5rem 1rem;
     z-index: 1000;
     /* border-bottom: 1px solid black; */
-    box-shadow: 2px 2px 8px gainsboro;
+    box-shadow: 2px 2px 8px black;
+}
+.HeadContainer a{
+    /* background-color: aqua; */
+    text-decoration: none;
+}
+
+.headerLeftContainer{
+    /* background-color: pink; */
+    flex: 1;
+    display: flex;  
+
+
+}
+.headerRightContainer{
+    flex: 1;
+    display: flex;
+    /* display: none; */
+    /* background-color: orange; */
+}
+#logoacnhor{
+    display: flex;
+    /* background-color: red; */
+}
+.logoContainer{
+    width: auto;
+    /* background-color: beige; */
+    display: flex;
+    cursor: pointer;
+}
+.logoIconContainer{
+    width: 50px;
+    height: 100%;
+    /* background-color: orange; */
+    margin-right: 0.5rem;
+}
+.rightUlContainer{
+    /* background-color: aliceblue; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    flex: 1;
+    padding: 0 1rem;
+    height: 100%;
+    list-style: none;
+}
+.ulItem{
+    cursor: pointer;
+    padding: 0 1rem;
+    /* margin-right: 1rem; */
+    /* background-color: green; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* padding: 0 0.5rem; */
+    position: relative;
+}
+
+.ulItem:hover{
+    background-color: gainsboro;
+}
+.rightLoginContainer{
+    /* background-color: yellow; */
+    display: flex;
+    width: max-content;
+    padding: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0  0 0 0; 
+    align-content: center;
+    list-style: none;
+}
+.dashboardOption{
+    background-color: orange;
+    flex: 1;
+    width: max-content;
+}
+
+#dashboardDropDown{
+    /* background-color: pink; */
+    display: flex;
+    height: 100%;
+    flex: 1;
+    padding: 0;
+
+}
+.dashboardOptionUl{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: red; */
+    display: none;
+    position: absolute;
+    top: 100%;
+}
+#dashboardDropDown:hover .dashboardOptionUl{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    /* background-color: orange; */
+}
+.dashboardItem{
+    background-color: white;
+    list-style: none;
+    width: 100%;
+    padding: 0.5rem;
+    flex: 1;
+    box-shadow: 1px 2px 4px gainsboro;
+}
+
+.dashboardItem:hover{
+    background-color: gainsboro;
+}
+#dashoardTitile{
+    font-size: 14px;
+    /* background-color: rebeccapurple; */
 }

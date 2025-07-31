@@ -14,6 +14,7 @@ import OathPage from "./Page/OathPage/OathPage";
 
 import { useEffect } from "react";
 import { OauthProvider } from "./Layouts/Auth/Hooks/Oathhooks";
+import HomePage from "./Page/Home/HomePage";
 
 // ✅ LayoutWrapper ko andar lo
 function LayoutWrapper() {
@@ -26,6 +27,9 @@ function LayoutWrapper() {
     <>
       {!shouldHideHeader && <Header />}
 
+      <Routes>
+        <Route path="/" element={<HomePage></HomePage>}></Route>
+      </Routes>
       <ClientAuthProvider>
         <Routes>
           <Route path="/client/*" element={<ClientRoutes />} />

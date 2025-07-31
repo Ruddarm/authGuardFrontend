@@ -1,6 +1,8 @@
 :root {
     --baseColor:#3298d7;
-    --compliment:7cd8e8;
+    --bgColor:#eef2f5;
+    --compliment:#7cd8e8;
+    --shadow: 1px 1px 6px #7cd8e8, 2px 2px 8px gainsboro;
     --baseGradient : linear-gradient(135deg, #7cd8e8  60%, #3298d7  100%);
 }
 
